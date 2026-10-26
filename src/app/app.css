@@ -1,0 +1,469 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-bottom: 70px;
+  color: #172033;
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(ellipse at 0% 10%, rgba(37, 99, 235, 0.06), transparent 35%),
+    radial-gradient(ellipse at 100% 45%, rgba(30, 58, 95, 0.05), transparent 35%),
+    linear-gradient(180deg, #f8fafc 0%, #f1f5f9 55%, #eaf0f7 100%);
+}
+
+
+.container {
+  width: min(1200px, 92%);
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 26px;
+  align-items: stretch;
+}
+
+/* Cartes automobiles */
+.auto-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  box-shadow:
+    0 4px 8px rgba(15, 23, 42, 0.025),
+    0 12px 30px rgba(15, 23, 42, 0.055);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.auto-card:hover {
+  transform: translateY(-7px);
+  border-color: #b9cbea;
+  box-shadow:
+    0 8px 16px rgba(15, 23, 42, 0.04),
+    0 22px 45px rgba(15, 23, 42, 0.12);
+}
+
+
+.auto-card img {
+  display: block;
+  width: 100%;
+  height: 225px;
+  object-fit: cover;
+  background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+  transition: transform 0.45s ease;
+}
+
+.auto-card:hover img {
+  transform: scale(1.035);
+}
+
+/* Informations voiture */
+.details {
+  flex: 1;
+  padding: 22px 22px 14px;
+}
+
+.details h3 {
+  margin: 0 0 15px;
+  color: #111827;
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: -0.4px;
+}
+
+.details p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.car-description {
+  box-sizing: border-box;
+  position: relative;
+  width: min(900px, 92%);
+  margin: 45px auto;
+  padding: clamp(24px, 4vw, 42px);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(37, 99, 235, 0.07), transparent 45%),
+    linear-gradient(145deg, #ffffff, #f8fafc);
+  color: #334155;
+  border: 1px solid #dce5f0;
+  border-top: 3px solid #2563eb;
+  border-radius: 22px;
+  box-shadow:
+    0 8px 18px rgba(15, 23, 42, 0.035),
+    0 20px 55px rgba(15, 23, 42, 0.075);
+  animation: descriptionAppear 0.4s ease-out;
+}
+
+
+.car-description::after {
+  content: "";
+  position: absolute;
+  right: -55px;
+  bottom: -75px;
+  width: 180px;
+  height: 180px;
+  border: 25px solid rgba(37, 99, 235, 0.035);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.car-description h2 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 22px;
+  padding-bottom: 17px;
+  color: #10203b;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: clamp(24px, 3.5vw, 34px);
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.7px;
+}
+
+.car-description h2::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 3px;
+  margin-top: 15px;
+  background: #2563eb;
+  border-radius: 10px;
+}
+
+.car-description p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #526176;
+  font-size: 15px;
+  line-height: 2;
+  white-space: pre-line;
+}
+
+/* Animation d'apparition */
+@keyframes descriptionAppear {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tablettes */
+@media (max-width: 900px) {
+  .container {
+    width: 94%;
+    gap: 20px;
+  }
+}
+
+/* Téléphones */
+@media (max-width: 600px) {
+  :host {
+    padding-bottom: 40px;
+  }
+
+  .container {
+    width: 91%;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin: 25px auto;
+  }
+
+  .auto-card {
+    border-radius: 17px;
+  }
+
+  .auto-card img {
+    height: 220px;
+  }
+
+  .details {
+    padding: 19px 19px 12px;
+  }
+
+  .details h3 {
+    font-size: 20px;
+  }
+
+  .car-description {
+    width: 91%;
+    margin: 30px auto;
+    padding: 23px 20px;
+    border-radius: 17px;
+  }
+
+  .car-description h2 {
+    font-size: 24px;
+    margin-bottom: 18px;
+  }
+
+  .car-description p {
+    font-size: 14px;
+    line-height: 1.85;
+  }
+}
+
+/* Accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  .auto-card,
+  .auto-card img {
+    transition: none;
+  }
+
+  .auto-card:hover,
+  .auto-card:hover img {
+    transform: none;
+  }
+
+  .car-description {
+    animation: none;
+  }
+}
+/* HERO — Luxury automotive design */
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: 500px;
+  padding: 80px max(7%, calc((100% - 1200px) / 2));
+  box-sizing: border-box;
+  overflow: hidden;
+  color: #ffffff;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5, 11, 23, 0.97) 0%,
+      rgba(5, 11, 23, 0.88) 43%,
+      rgba(5, 11, 23, 0.25) 100%
+    ),
+    url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2000&q=85")
+    center 55% / cover no-repeat;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  animation: heroReveal 0.8s ease-out both;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #93c5fd;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.hero-tag::before {
+  content: "";
+  width: 28px;
+  height: 2px;
+  background: #60a5fa;
+}
+
+.hero h1 {
+  margin: 27px 0 22px;
+  color: #ffffff;
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -3px;
+}
+
+.hero h1 span {
+  display: block;
+  margin-top: 10px;
+  color: #75aaff;
+}
+
+.hero-description {
+  max-width: 510px;
+  margin: 0;
+  color: #d4dbe7;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 34px;
+}
+
+.hero-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 16px 22px;
+  border: 1px solid #75aaff;
+  border-radius: 5px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.hero-button span {
+  font-size: 20px;
+}
+
+.hero-button:hover {
+  background: #1d4ed8;
+  transform: translateY(-3px);
+}
+
+.hero-note {
+  color: #b8c5d8;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.hero-decoration {
+  position: absolute;
+  z-index: 1;
+  right: 5%;
+  bottom: 30px;
+  color: rgba(255, 255, 255, 0.18);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  writing-mode: vertical-rl;
+}
+
+/* SHOWROOM HEADING */
+.showroom-section {
+  padding-top: 75px;
+  scroll-margin-top: 25px;
+}
+
+.section-heading {
+  width: min(760px, 90%);
+  margin: 0 auto 38px;
+  text-align: center;
+}
+
+.section-tag {
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.section-heading h2 {
+  margin: 16px 0;
+  color: #101b30;
+  font-size: clamp(30px, 4.5vw, 46px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -1.2px;
+}
+
+.section-heading h2 span {
+  color: #2563eb;
+}
+
+.section-heading p {
+  max-width: 580px;
+  margin: 0 auto;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.heading-line {
+  width: 52px;
+  height: 3px;
+  margin: 24px auto 0;
+  border-radius: 10px;
+  background: #2563eb;
+}
+
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: 470px;
+    padding: 65px 7%;
+    background-position: 60% center;
+  }
+
+  .hero h1 {
+    font-size: 56px;
+    letter-spacing: -2px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+
+  .hero-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 17px;
+  }
+
+  .hero-decoration {
+    right: 12px;
+    bottom: 18px;
+    font-size: 9px;
+  }
+
+  .showroom-section {
+    padding-top: 48px;
+  }
+
+  .section-heading {
+    margin-bottom: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content {
+    animation: none;
+  }
+
+  .hero-button {
+    transition: none;
+  }
+
+  .hero-button:hover {
+    transform: none;
+  }
+}  
